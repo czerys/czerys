@@ -460,6 +460,7 @@ async def process_transaction(update: Update, context: ContextTypes.DEFAULT_TYPE
 
 def main():
     TOKEN = os.getenv("BOT_TOKEN")
+    application = Application.builder().token(TOKEN).build()
 
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("info", info))
@@ -470,6 +471,3 @@ def main():
     application.add_handler(CallbackQueryHandler(process_transaction, pattern='^(accept|reject|next)_'))
 
     application.run_polling()
-
-if __name__ == '__main__':
-    main()
