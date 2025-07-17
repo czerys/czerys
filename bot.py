@@ -1,4 +1,5 @@
 import json
+import os
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, CallbackQueryHandler, ContextTypes
 
@@ -458,7 +459,7 @@ async def process_transaction(update: Update, context: ContextTypes.DEFAULT_TYPE
                 pass
 
 def main():
-    application = Application.builder().token("7568030759:AAHEzKBNz2XD7YB4SZ1VDGnhMtey-QRemoI").build()
+    TOKEN = os.getenv("BOT_TOKEN")
 
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("info", info))
